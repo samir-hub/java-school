@@ -35,8 +35,12 @@ public class CourseController
     }
 
     @GetMapping(value = "/studcount", produces = {"application/json"})
-    public ResponseEntity<?> getCountStudentsInCourses()
+    public ResponseEntity<?> getCountStudentsInCourses(HttpServletRequest request)
     {
+        logger.warn("This is a log");
+        logger.trace("This is a log");
+
+        logger.info(request.getMethod()+ " " + request.getRequestURI() + " accessed");
         return new ResponseEntity<>(courseService.getCountStudentsInCourse(), HttpStatus.OK);
     }
 
